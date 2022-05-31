@@ -14,7 +14,7 @@ class Api {
           headers: {HttpHeaders.authorizationHeader: "Bearer $token"});
       responseJson = _returnResponse(response);
     } on SocketException {
-      throw FetchDataException('No Internet connection');
+      throw FetchDataException("No Internet Connection");
     }
     return responseJson;
   }
@@ -22,12 +22,13 @@ class Api {
   Future<dynamic> get(dynamic url) async {
     var token = await UserInfo().getToken();
     var responseJson;
+
     try {
       final response = await http.get(url,
           headers: {HttpHeaders.authorizationHeader: "Bearer $token"});
       responseJson = _returnResponse(response);
     } on SocketException {
-      throw FetchDataException('No Internet connection');
+      throw FetchDataException("No Internet Connection");
     }
     return responseJson;
   }
@@ -35,12 +36,13 @@ class Api {
   Future<dynamic> delete(dynamic url) async {
     var token = await UserInfo().getToken();
     var responseJson;
+
     try {
       final response = await http.delete(url,
           headers: {HttpHeaders.authorizationHeader: "Bearer $token"});
       responseJson = _returnResponse(response);
     } on SocketException {
-      throw FetchDataException('No Internet connection');
+      throw FetchDataException("No Internet Connection");
     }
     return responseJson;
   }
